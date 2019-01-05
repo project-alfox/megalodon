@@ -1,0 +1,21 @@
+box: node
+build:
+  steps:
+    - npm-install
+    - npm-test
+    - script:
+        name: Compile optimized build
+        code: |
+          npm run build
+
+staging:
+  steps:
+    - add-to-known_hosts:
+        hostname: $SERVER_HOSTNAME
+    - add-ssh-key:
+        keyname: alfox
+    - script:
+        name: Push to dokku
+        code: |
+          touch ./build/.static
+          tar -cvO ./build/* ./build/.static | ssh dokku@$SERVER_HOSTNAME tar:in frontend

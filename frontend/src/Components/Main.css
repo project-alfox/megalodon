@@ -1,0 +1,54 @@
+
+.main-container {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: "stats battle map-area" "unused unused unused";
+    background-color: #fff;
+    color: #444;
+}
+
+.stats {
+    grid-area: stats;
+    background-color: aqua;
+}
+
+.battle {
+    grid-area: battle;
+    background-color: yellowgreen;
+}
+
+.map-area {
+    grid-area: map-area;
+    background-color: indianred;
+}
+
+.unused {
+    grid-area: unused;
+    background-color: greenyellow;
+}
+
+.map-container {
+    color: #dddddd;
+    background-color: #222222;
+    border: #000000 solid 2px;
+}
+
+.map-row {
+    display: flex;
+    justify-content: center;
+}
+
+.map-row .map-col {
+    display: flex;
+    flex: 0 0 45px;
+    height: 45px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-row .mountain { background-color: #B64201; }
+.map-row .plains   { background-color: #C4A871; }
+.map-row .forest   { background-color: #508104; }
+.map-row .water    { background-color: #005B95; }
