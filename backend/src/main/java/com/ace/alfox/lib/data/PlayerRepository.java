@@ -3,11 +3,15 @@ package com.ace.alfox.lib.data;
 import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 import com.ace.alfox.game.models.Player;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Random;
+
+import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.ObjectRepository;
 
 public class PlayerRepository extends ObjectRepositoryFacade<Player> {
@@ -39,6 +43,16 @@ public class PlayerRepository extends ObjectRepositoryFacade<Player> {
   }
 
   /**
+   * Search for a player based on their PlayerId, their unique identifier.
+   *
+   * @param playerId player identifier
+   * @return The Player or null if not found.
+   */
+  public Player find(NitriteId playerId) {
+    return super.find(eq("id", playerId)).firstOrDefault();
+  }
+
+  /**
    * Authenticate checks the has of the username and password supplied
    *
    * @param username
@@ -47,10 +61,11 @@ public class PlayerRepository extends ObjectRepositoryFacade<Player> {
    */
   public Player authenticate(String username, String password) {
     Player player = find(username);
+    byte[] test = new byte[0];
     if (player == null) {
       generateHash("lol", "lol".getBytes()); // to protect from timing attacks!
       return null;
-    } else if (player.password == generateHash(password, player.salt)) {
+    } else if ( Arrays.equals(player.password, (test = generateHash(password, player.salt) )) ) {
       return player;
     } else {
       return null;
@@ -74,10 +89,9 @@ public class PlayerRepository extends ObjectRepositoryFacade<Player> {
     newPlayer.salt = new byte[32];
     random.nextBytes(newPlayer.salt);
     newPlayer.password = generateHash(password, newPlayer.salt);
-    newPlayer.id = new Random().nextLong();
-    super.insert(
-        newPlayer); // Make sure to do some check here to make sure it's inserted! Evan was too
-    // vague.
+    var result = super.insert(
+        newPlayer); // Make sure to do some check here to make sure it's inserted! Evan was too vague.
+    System.out.println("inserted " + result.getAffectedCount() + " rows");
     return newPlayer;
   }
 

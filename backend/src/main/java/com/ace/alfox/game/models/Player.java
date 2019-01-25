@@ -8,13 +8,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
 public class Player {
 
   public static Player findPlayer(Database playerDatabase, HttpServletRequest request) {
     HttpSession session = request.getSession(true);
-    Long playerId = (Long) session.getAttribute("pid");
+    NitriteId playerId = (NitriteId) session.getAttribute("pid");
 
     if (playerId == null) {
       return null;
@@ -22,7 +24,7 @@ public class Player {
     return playerDatabase.players.find(playerId);
   }
 
-  @Id public Long id;
+  @Id public NitriteId id;
   public String name = "Jimmy Fred";
   public int hp = 100;
   public int zoneId = 0;
@@ -30,13 +32,12 @@ public class Player {
   public PlayerState playerState = PlayerState.FREE;
   public Long activeBattleId = null;
 
-  @JsonIgnore
   public byte[] password =
       new byte
           [0]; // Neither of these should be in player, they are user attributes, but no user class
   // exists as of time of addition
 
-  @JsonIgnore public byte[] salt = new byte[0];
+  public byte[] salt = new byte[0];
 
   public ActionResult applyAction(IAction doSomething, Map<String, Object> params) {
     return doSomething.applyAction(this, params);

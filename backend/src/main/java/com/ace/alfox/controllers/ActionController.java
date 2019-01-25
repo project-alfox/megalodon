@@ -8,6 +8,8 @@ import com.ace.alfox.lib.data.Database;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.dizitart.no2.NitriteId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +29,7 @@ class ActionController {
       @PathVariable String command,
       @RequestBody Map<String, Object> params) {
     HttpSession session = request.getSession(true);
-    Long playerId = (Long) session.getAttribute("pid");
+    NitriteId playerId = (NitriteId) session.getAttribute("pid");
     if (playerId == null) {
       return ResponseEntity.status(401).build();
     }

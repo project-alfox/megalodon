@@ -26,6 +26,32 @@ input + label {
 .alert {
   background: red;
   padding: 1em;
-  border: 3px solid red;
+  border: 3px solid #bd0505;
   margin-top: 0.5em;
+  color: white;
+}
+
+.⚠ {
+    position: relative; /* So we can position the content as absolute */
+    font-size: 130%;
+    /* Using the borders to create a triangle  */
+    border-left: 0.80em solid transparent;
+    border-right: 0.80em solid transparent;
+    border-bottom: 1.50em solid yellow;
+    margin-right: 0.5em;
+    top: -1.3em;          /* Correction because of the CSS Triangle trick*/
+
+    &::before {
+
+        content: "!";
+
+        /* Position the character over the triangle */
+        top: 1.5em;
+        left: -0.45em;
+        position: absolute;
+
+        color: black;
+        font-size: 1em;
+        line-height: 1em;
+    }
 }

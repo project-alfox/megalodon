@@ -62,7 +62,10 @@ class Login extends Component {
           <input type="password" value={this.state.password} onChange={e => this.setState({password: e.target.value})} />
           <button onClick={e => this.signup()}>Signup</button>
           <button onClick={e => this.login()}>Login</button>
-          <div hidden={!this.state.alertMessage} className="alert">{this.state.alertMessage}</div>
+          <div hidden={!this.state.alertMessage} className="alert">
+            <span className="⚠"></span>
+            {this.state.alertMessage}
+          </div>
         </div>
         </div>
       );
