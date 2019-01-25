@@ -4,6 +4,7 @@ game.db
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
+.cache
 .apt_generated
 .classpath
 .factorypath
