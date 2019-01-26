@@ -124,7 +124,7 @@ class Main extends Component {
           </div>
         </div>
         <div
-          className="unused">{JSON.stringify(this.state.player)} {JSON.stringify(this.state.message)}</div>
+          className="unused"><pre>{JSON.stringify(this.state.player, null, "  ")}</pre> {JSON.stringify(this.state.message)}</div>
       </div>
     );
   }

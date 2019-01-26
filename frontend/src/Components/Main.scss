@@ -34,6 +34,8 @@
 .unused {
     grid-area: unused;
     background-color: greenyellow;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .map-container {
