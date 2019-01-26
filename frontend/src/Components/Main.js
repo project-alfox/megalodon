@@ -7,11 +7,11 @@ import _ from "underscore";
 
 class Main extends Component {
 
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       map: null,
-      player: null,
+      player: props.player,
       message: ''
     };
   }
@@ -97,10 +97,7 @@ class Main extends Component {
       <div className="main-container">
         <div className="stats">
           Stats
-          <Login onLogin={async player => {
-            const map = await this.refreshMap(player);
-            this.setState({ player, map });
-          }} />
+          <Login />
         </div>
         <div className="battle">
           <div>Fight fight fight!</div>

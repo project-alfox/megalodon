@@ -3,3 +3,29 @@ label + input {
   display: block;
   width: 100%;
 }
+input + label {
+  margin-top: 0.7em;
+  display: block;
+}
+
+.login-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: 200px;
+  grid-template-areas:
+    ". form form ."
+    ". form form .";
+}
+.login-form {
+  grid-area: form;
+  align-self: center;
+  justify-self: center;
+}
+
+.alert {
+  background: red;
+  padding: 1em;
+  border: 3px solid red;
+  margin-top: 0.5em;
+}
