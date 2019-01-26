@@ -29,6 +29,9 @@
 .map-area {
     grid-area: map-area;
     background-color: indianred;
+    .map-container {
+      margin-bottom: 1em;
+    }
 }
 
 .unused {

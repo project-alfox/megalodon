@@ -34,7 +34,7 @@ class Main extends Component {
   async componentWillMount() {
     const map = await this.refreshMap(this.state.player);
     if (map !== null) {
-      this.setState(map);
+      this.setState({map: map});
     }
   }
 
@@ -88,7 +88,7 @@ class Main extends Component {
   };
 
   renderRow (row) {
-    <div className="map-row">{row.map(col => this.renderCol(col))}</div>;
+    return <div className="map-row">{row.map(col => this.renderCol(col))}</div>;
   }
 
   render() {
