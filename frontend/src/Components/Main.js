@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { perform } from '../API'
 import { getMap, changeZone } from '../API/map'
-import './Main.css';
+import './Main.scss';
 import Login from './Login';
 import _ from "underscore";
 
 class Main extends Component {
 
-  state = {
-    map: null,
-    player: null,
-    message: ''
-  };
+  constructor() {
+    super();
+    this.state = {
+      map: null,
+      player: null,
+      message: ''
+    };
+  }
 
   async refreshMap(player) {
     if (player == null) {
@@ -70,7 +73,7 @@ class Main extends Component {
     }
   }
 
-  renderCol = (row) => {
+  renderCol (row) {
     if (row === null) {
       return <div className="map-col" />;
     } else if (row.type === 'mountain') {
@@ -84,7 +87,9 @@ class Main extends Component {
     }
   };
 
-  renderRow = (row) => <div className="map-row">{row.map(col => this.renderCol(col))}</div>;
+  renderRow (row) {
+    <div className="map-row">{row.map(col => this.renderCol(col))}</div>;
+  }
 
   render() {
     const { player } = this.state;

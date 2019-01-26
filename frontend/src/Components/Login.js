@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import User from '../API/login'
 
+import './Login.scss';
+
 class Login extends Component {
 
-  state = {
-    username: '',
-    player: null
+  constructor() {
+    super()
+    this.state = {
+      username: '',
+      player: null
+    }
   }
 
   componentDidMount() {

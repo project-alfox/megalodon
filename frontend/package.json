@@ -2,20 +2,24 @@
   "name": "Frontend",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.1.6",
-    "parcel-bundler": "^1.10.3",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+  "scripts": {
+    "build": "parcel build -d ../backend/src/main/resources/static ./public/index.html",
+    "dev": "parcel ./public/index.html",
+    "start": "parcel watch -d ../backend/build/resources/main/static ./public/index.html"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.11.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "sass": "^1.16.1",
     "underscore": "^1.9.1"
   },
-  "browserslist": "> 2%",
-  "scripts": {
-    "start": "parcel watch -d ../build/resources/main/static ./public/index.html",
-    "build": "parcel build -d ../src/main/resources/static ./public/index.html"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.6"
+  "dependencies": {
+    "react-router-dom": "^4.3.1"
   }
 }

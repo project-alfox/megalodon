@@ -2,10 +2,18 @@
 .main-container {
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: auto auto auto;
-    grid-template-areas: "stats battle map-area" "unused unused unused";
+    grid-template-areas: "stats" "battle" "map-area" "unused";
+    @media(min-width: 800px) {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "stats battle map-area" "unused unused unused";
+    }
+    grid-gap: 20px;
     background-color: #fff;
     color: #444;
+    height: 100vh;
+    > * {
+      padding: 1em;
+    }
 }
 
 .stats {
@@ -37,15 +45,15 @@
 .map-row {
     display: flex;
     justify-content: center;
-}
 
-.map-row .map-col {
-    display: flex;
-    flex: 0 0 45px;
-    height: 45px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+    .map-col {
+        display: flex;
+        flex: 0 0 45px;
+        height: 45px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .map-row .mountain { background-color: #B64201; }
