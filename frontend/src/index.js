@@ -7,7 +7,5 @@ import './index.scss';
 import Main from './Components/Main';
 
 ReactDOM.render(<Router>
-  <Route exact path="/" component={Home} />
-  <Route path="/about" component={About} />
-  <Route path="/topics" component={Topics} />
+  <Route exact path="/" component={Main} />
 </Router>, document.getElementById('root'));
