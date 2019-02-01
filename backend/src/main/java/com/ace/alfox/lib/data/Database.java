@@ -16,7 +16,6 @@ public class Database {
 
   public final PlayerRepository players;
   public final LocationRepository locations;
-  public final BattleRepository battles;
 
   /**
    * Open the given database or create it if it doesn't exist. Only one instance can have a database
@@ -34,7 +33,6 @@ public class Database {
     db = _db.openOrCreate();
     players = new PlayerRepository(db.getRepository(Player.class));
     locations = new LocationRepository(db.getRepository(Location.class));
-    battles = new BattleRepository(db.getRepository(Battle.class));
   }
 
   @PreDestroy

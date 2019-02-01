@@ -3,7 +3,6 @@ package com.ace.alfox.game;
 import com.ace.alfox.game.interfaces.IAction;
 import com.ace.alfox.game.models.Location;
 import com.ace.alfox.game.models.Player;
-import com.ace.alfox.game.models.Player.PlayerState;
 import com.ace.alfox.lib.ActionResult;
 import com.ace.alfox.lib.Battle;
 import com.ace.alfox.lib.PlayerAction;
@@ -47,16 +46,6 @@ public class MoveAction implements IAction {
       return result.notOk().log("You're dead.");
     }
 
-    if (!player.canMove()) {
-      result.log("Cannot move.");
-
-      if (player.inBattle()) {
-        result.log(getBattleLog(this.db.battles.find(player), db.locations.find(player.location)));
-      }
-
-      return result;
-    }
-
     String direction = (String) params.get("direction");
 
     if (direction == null || !directions.containsKey(direction)) {
@@ -69,15 +58,7 @@ public class MoveAction implements IAction {
     result.log("traveled " + direction);
 
     Location location = db.locations.find(player.location);
-    if (random.nextInt(5) == 0) {
-      // BATTTTTLE!
-      Battle battle = db.battles.newBattle();
-      result.log(getBattleLog(battle, location));
-      player.playerState = PlayerState.IN_BATTLE;
-      player.activeBattleId = battle.id;
-    } else {
-      result.log("You see, " + location.title).log(location.description);
-    }
+    result.log("You see, " + location.title).log(location.description);
 
     return result;
   }
