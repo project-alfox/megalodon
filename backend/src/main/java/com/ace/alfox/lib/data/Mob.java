@@ -9,4 +9,6 @@ public class Mob {
   public static Mob randomMob() {
     return new Mob();
   }
+
+  public void tick() {}
 }

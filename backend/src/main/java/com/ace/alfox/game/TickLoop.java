@@ -14,7 +14,7 @@ public class TickLoop extends Thread {
 
   @PostConstruct
   private void startThread() {
-    run();
+    start();
   }
 
   /**
@@ -27,6 +27,16 @@ public class TickLoop extends Thread {
       try {
         Thread.sleep(TICK_DELAY);
         System.out.println("HEY LOOK AT ME MOM, NO MAIN LOOP");
+        // Is this the best way to itereate over all the mobs?
+        db.mobs
+            .getDocumentCollection()
+            .find()
+            .forEach(
+                mob -> {
+                  // Should mobs be dumb and just provide get/set, and there is something else that controls them?
+                  // The benefit is that you can define interactions between things (mobs and players. mobs and the map, etc) without the mobs or players or map knowing anything about it.
+                  db.mobs.getById(mob.getId()).tick();
+                });
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
