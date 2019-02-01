@@ -29,6 +29,16 @@ public class Vector2 extends Vector<Integer> implements Comparable<Vector2> {
     return this.get(1);
   }
 
+  public Vector2 setX(int x) {
+    set(0, x);
+    return this;
+  }
+
+  public Vector2 setY(int y) {
+    set(1, y);
+    return this;
+  }
+
   @Override
   public int compareTo(Vector2 o) {
     return Math.abs(o.x() - x()) + Math.abs((o.y() - y()));
