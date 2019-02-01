@@ -37,11 +37,6 @@ public class MoveAction implements IAction {
   public ActionResult applyAction(Player player, Map<String, Object> params) {
     ActionResult result = new ActionResult(player);
 
-    /**
-     * TODO: Consider whether dead players should be a state, or perhaps the "player.canMove()"
-     * method would just check this. Might make the most sense for PlayerState to be PRIVATE to the
-     * player, and not interacted with directly by anything but the Player class.
-     */
     if (player.hp <= 0) {
       return result.notOk().log("You're dead.");
     }

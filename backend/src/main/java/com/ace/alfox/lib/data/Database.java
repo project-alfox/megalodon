@@ -2,7 +2,6 @@ package com.ace.alfox.lib.data;
 
 import com.ace.alfox.game.models.Location;
 import com.ace.alfox.game.models.Player;
-import com.ace.alfox.lib.Battle;
 import javax.annotation.PreDestroy;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteBuilder;

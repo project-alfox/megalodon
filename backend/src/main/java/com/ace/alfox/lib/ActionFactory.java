@@ -29,7 +29,12 @@ public class ActionFactory {
       String alias;
       try {
         Class<?> cl = Class.forName(bd.getBeanClassName());
-        alias = cl.getAnnotation(PlayerAction.class).alias();
+        PlayerAction playerAction = cl.getAnnotation(PlayerAction.class);
+        if (playerAction == null) {
+          System.out.println("Received a non-PlayerAction, skipping " + cl.toString());
+          continue;
+        }
+        alias = playerAction.alias();
         actions.put(alias, (Class<IAction>) cl);
       } catch (ClassNotFoundException e) {
         e.printStackTrace();
