@@ -14,6 +14,7 @@ public class Database {
   private final Nitrite db;
 
   public final PlayerRepository players;
+  public final MobRepository mobs;
   public final LocationRepository locations;
 
   /**
@@ -31,6 +32,7 @@ public class Database {
     }
     db = _db.openOrCreate();
     players = new PlayerRepository(db.getRepository(Player.class));
+    mobs = new MobRepository(db.getRepository(Mob.class));
     locations = new LocationRepository(db.getRepository(Location.class));
   }
 
