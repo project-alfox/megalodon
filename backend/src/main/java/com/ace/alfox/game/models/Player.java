@@ -9,11 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.dizitart.no2.NitriteId;
-import org.dizitart.no2.objects.Id;
+import java.util.Map;
 
 public class Player {
-  @Id public NitriteId id;
+  @Id public long id;
   public String name = "Jimmy Fred";
   public int hp = 100;
   public int maxHP = 100;
@@ -28,7 +27,7 @@ public class Player {
 
   public static Player findPlayer(Database playerDatabase, HttpServletRequest request) {
     HttpSession session = request.getSession(true);
-    NitriteId playerId = (NitriteId) session.getAttribute("pid");
+    Long playerId = (Long) session.getAttribute("pid");
 
     if (playerId == null) {
       return null;

@@ -1,15 +1,16 @@
 package com.ace.alfox.lib.data;
 
-import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
-
 import com.ace.alfox.game.models.Player;
+import org.dizitart.no2.objects.ObjectRepository;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
-import org.dizitart.no2.NitriteId;
-import org.dizitart.no2.objects.ObjectRepository;
+import java.util.UUID;
+
+import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 public class PlayerRepository extends ObjectRepositoryFacade<Player> {
 
@@ -36,16 +37,6 @@ public class PlayerRepository extends ObjectRepositoryFacade<Player> {
    * @return The Player or null if not found.
    */
   public Player find(Long playerId) {
-    return super.find(eq("id", playerId)).firstOrDefault();
-  }
-
-  /**
-   * Search for a player based on their PlayerId, their unique identifier.
-   *
-   * @param playerId player identifier
-   * @return The Player or null if not found.
-   */
-  public Player find(NitriteId playerId) {
     return super.find(eq("id", playerId)).firstOrDefault();
   }
 
@@ -82,6 +73,7 @@ public class PlayerRepository extends ObjectRepositoryFacade<Player> {
    */
   public Player signUp(String username, String password) {
     Player newPlayer = new Player();
+    newPlayer.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
     newPlayer.name = username;
     newPlayer.salt = new byte[32];
     random.nextBytes(newPlayer.salt);

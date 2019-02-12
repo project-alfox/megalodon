@@ -2,7 +2,6 @@ package com.ace.alfox.controllers;
 
 import com.ace.alfox.game.models.Player;
 import com.ace.alfox.lib.data.Database;
-import org.dizitart.no2.NitriteId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
-import java.util.logging.Logger;
 
 @RestController
 public class LoginController {
@@ -23,7 +21,7 @@ public class LoginController {
   @GetMapping("/login")
   public ResponseEntity getLoginStatus(HttpServletRequest request) {
     HttpSession session = request.getSession(true);
-    NitriteId playerId = (NitriteId) session.getAttribute("pid");
+    Long playerId = (Long) session.getAttribute("pid");
     if (playerId == null) {
       return ResponseEntity.status(401).build();
     } else {
@@ -70,7 +68,7 @@ public class LoginController {
     if (p == null) {
       p = db.players.signUp(
           signupRequest.get("username").toString(), signupRequest.get("password").toString());
-      System.out.println("Signed up: " + p.name);
+      System.out.println("Signed up: " + p.name + " (" + p.id + ")");
       login(signupRequest, request);
     } else {
       System.out.println(p.name + " " + p.salt);
