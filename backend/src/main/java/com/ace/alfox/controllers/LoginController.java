@@ -66,8 +66,9 @@ public class LoginController {
     Player p = db.players.find(signupRequest.get("username").toString());
 
     if (p == null) {
-      p = db.players.signUp(
-          signupRequest.get("username").toString(), signupRequest.get("password").toString());
+      p =
+          db.players.signUp(
+              signupRequest.get("username").toString(), signupRequest.get("password").toString());
       System.out.println("Signed up: " + p.name + " (" + p.id + ")");
       login(signupRequest, request);
     } else {

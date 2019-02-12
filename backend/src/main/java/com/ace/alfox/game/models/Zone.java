@@ -4,9 +4,6 @@ import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
 public class Zone {
-    @Id
-    public NitriteId zoneID;
-    Tile[][] map;
+  @Id public NitriteId zoneID;
+  Tile[][] map;
 }
-
-

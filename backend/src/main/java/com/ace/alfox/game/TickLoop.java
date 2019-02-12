@@ -2,13 +2,15 @@ package com.ace.alfox.game;
 
 import com.ace.alfox.lib.data.Database;
 import com.ace.alfox.lib.data.Mob;
-import java.security.SecureRandom;
-import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.security.SecureRandom;
+
 @Component
 public class TickLoop extends Thread {
+
   private static final SecureRandom random = new SecureRandom();
 
   private static final int TWENTY_SECONDS = 20 * 1000;

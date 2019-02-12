@@ -1,16 +1,15 @@
 package com.ace.alfox.lib.data;
 
-import com.ace.alfox.game.models.Player;
-import org.dizitart.no2.objects.ObjectRepository;
+import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
+import com.ace.alfox.game.models.Player;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.UUID;
-
-import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
+import org.dizitart.no2.objects.ObjectRepository;
 
 public class PlayerRepository extends ObjectRepositoryFacade<Player> {
 
@@ -81,7 +80,7 @@ public class PlayerRepository extends ObjectRepositoryFacade<Player> {
     var result =
         super.insert(
             newPlayer); // Make sure to do some check here to make sure it's inserted! Evan was too
-                        // vague.
+    // vague.
     System.out.println("inserted " + result.getAffectedCount() + " rows");
     return newPlayer;
   }
