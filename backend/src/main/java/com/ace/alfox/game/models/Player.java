@@ -4,15 +4,16 @@ import com.ace.alfox.game.interfaces.IAction;
 import com.ace.alfox.lib.ActionResult;
 import com.ace.alfox.lib.Vector2;
 import com.ace.alfox.lib.data.Database;
+import org.dizitart.no2.objects.Id;
 
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
-  @Id public long id;
+  @Id
+  public long id;
   public String name = "Jimmy Fred";
   public int hp = 100;
   public int maxHP = 100;
