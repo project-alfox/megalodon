@@ -16,6 +16,7 @@ public class Database {
   public final PlayerRepository players;
   public final MobRepository mobs;
   public final LocationRepository locations;
+  public final LogRepository logs;
 
   /**
    * Open the given database or create it if it doesn't exist. Only one instance can have a database
@@ -34,6 +35,7 @@ public class Database {
     players = new PlayerRepository(db.getRepository(Player.class));
     mobs = new MobRepository(db.getRepository(Mob.class));
     locations = new LocationRepository(db.getRepository(Location.class));
+    logs = new LogRepository(db.getRepository(CharacterLog.class));
   }
 
   @PreDestroy

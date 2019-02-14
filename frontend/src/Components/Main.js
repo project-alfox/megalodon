@@ -38,10 +38,24 @@ class Main extends Component {
     }
   }
 
+  scheduleUpdate({timeTillNextAction}) {
+    if(timeTillNextAction > 0) {
+      setTimeout(async () => {
+        let results = await perform('self', {}).then(res => res.json());
+        if (results.ok) {
+          this.setState({ player: results.player, message: results.message })
+        } else if (results.message != null) {
+          this.setState({ message: results.message })
+        }
+      }, timeTillNextAction);
+    }
+  }
+
   async move(direction) {
     let results = await perform('move', { direction }).then(res => res.json());
     if (results.ok) {
-      this.setState({ player: results.player, message: results.message })
+      this.setState({ player: results.player || this.state.player, message: results.message })
+      this.scheduleUpdate(results)
     } else if (results.message != null) {
       this.setState({ message: results.message })
     }
@@ -67,7 +81,8 @@ class Main extends Component {
   async punch() {
     let results = await perform('battle', { action: 'punch' }).then(res => res.json());
     if (results.ok) {
-      this.setState({ player: results.player, message: results.message })
+      this.setState({ player: results.player || this.state.player, message: results.message })
+      this.scheduleUpdate(results)
     } else if (results.message != null) {
       this.setState({ message: results.message })
     }

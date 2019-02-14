@@ -2,11 +2,10 @@ package com.ace.alfox.game;
 
 import com.ace.alfox.lib.data.Database;
 import com.ace.alfox.lib.data.Mob;
+import java.security.SecureRandom;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import java.security.SecureRandom;
 
 @Component
 public class TickLoop extends Thread {
@@ -20,7 +19,7 @@ public class TickLoop extends Thread {
 
   @PostConstruct
   private void startThread() {
-    start();
+    // start();
   }
 
   /**

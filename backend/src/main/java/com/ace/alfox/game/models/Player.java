@@ -1,11 +1,8 @@
 package com.ace.alfox.game.models;
 
-import com.ace.alfox.game.interfaces.IAction;
-import com.ace.alfox.lib.ActionResult;
 import com.ace.alfox.lib.Vector2;
 import com.ace.alfox.lib.data.Database;
 import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.dizitart.no2.objects.Id;
@@ -32,9 +29,5 @@ public class Player {
       return null;
     }
     return playerDatabase.players.find(playerId);
-  }
-
-  public ActionResult applyAction(IAction doSomething, Map<String, Object> params) {
-    return doSomething.applyAction(this, params);
   }
 }

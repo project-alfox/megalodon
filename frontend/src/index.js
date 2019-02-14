@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './index.scss';
 
 import Auth from './API/login';
+import AC from './Components/Auth';
 import Main from './Components/Main';
 import Login from './Components/Login';
 

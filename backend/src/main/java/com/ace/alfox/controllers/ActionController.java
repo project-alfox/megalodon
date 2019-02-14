@@ -36,9 +36,7 @@ class ActionController {
       return ResponseEntity.notFound().build();
     }
     IAction doSomething = actionFactory.get(command);
-    ActionResult result = player.applyAction(doSomething, params);
-    db.players.update(player);
-
+    ActionResult result = doSomething.applyAction(playerId, params);
     return ResponseEntity.ok(result);
   }
 }

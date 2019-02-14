@@ -9,6 +9,9 @@ public class ActionResult {
   public Player player = null;
   public Battle activeBattle = null;
   public boolean ok = true;
+  public long timeTillNextAction = 0;
+
+  public ActionResult() {}
 
   public ActionResult(Player player) {
     this.player = player;
