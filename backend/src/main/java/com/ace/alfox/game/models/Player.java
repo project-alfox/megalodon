@@ -21,6 +21,7 @@ public class Player {
   public int cooldown = 0;
   public HashMap<Integer, Ability> abilities = new HashMap<>();
 
+  // @FIXME: We really shouldn't have DB or network stuff in the data classes.
   public static Player findPlayer(Database playerDatabase, HttpServletRequest request) {
     HttpSession session = request.getSession(true);
     Long playerId = (Long) session.getAttribute("pid");

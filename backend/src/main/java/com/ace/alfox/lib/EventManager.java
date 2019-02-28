@@ -1,7 +1,5 @@
 package com.ace.alfox.lib;
 
-import org.springframework.stereotype.Service;
-
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,11 +8,12 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
 
 @Service
 public class EventManager {
-  private ScheduledThreadPoolExecutor threadPoolExecutor;
-  private HashMap<Long, Set<TaskMetaDataWithFuture>> playerTasks;
+  private final ScheduledThreadPoolExecutor threadPoolExecutor;
+  private final HashMap<Long, Set<TaskMetaDataWithFuture>> playerTasks;
 
   private EventManager() {
     playerTasks = new HashMap<>();

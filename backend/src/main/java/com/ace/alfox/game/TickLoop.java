@@ -19,7 +19,7 @@ public class TickLoop extends Thread {
 
   @PostConstruct
   private void startThread() {
-    // start();
+    start();
   }
 
   /**
